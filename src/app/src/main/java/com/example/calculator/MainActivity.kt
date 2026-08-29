@@ -10,6 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,6 +40,7 @@ import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,14 +65,14 @@ class MainActivity : ComponentActivity() {
 fun Greeting() {
     var currentstring by remember{ mutableStateOf("")}//目前數值but字串
     var currentvalue by remember{ mutableStateOf(0)}//目前數值
-    var display by remember { mutableStateOf("") }//顯示
+    var display by remember { mutableStateOf("test") }//顯示
 
     Scaffold(modifier=Modifier
         .fillMaxSize(),
         containerColor = Color.Black,
         topBar = {
             TopAppBar(
-                title = { Text("Calculator", fontSize = 40.sp) },
+                title = { Text("", fontSize = 50.sp) },
                 colors=TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Black,
                     titleContentColor = Color.White
@@ -93,11 +95,14 @@ fun Greeting() {
                     unfocusedIndicatorColor = Color.Transparent
                 ),
                 value=display,
-                textStyle = TextStyle(fontSize = 30.sp, color = Color.White),
+                textStyle = TextStyle(
+                    fontSize = 50.sp, color = Color.White,
+                    textAlign = TextAlign.End
+                ),
                 onValueChange = {},
                 readOnly = true,
             )
-            Spacer(modifier=Modifier.height(20.dp))
+            Spacer(modifier=Modifier.height(150.dp))
             //第一排按鈕
             Row(
                 modifier=Modifier
@@ -112,10 +117,11 @@ fun Greeting() {
                     },
                     modifier=Modifier
                         .padding(5.dp)
+                        .aspectRatio(1f)
                         .weight(1f),
                     shape = CircleShape,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.DarkGray,
+                        containerColor = Color(0xFF222222),
                         contentColor = Color.Red
                     )
                 ) {
@@ -129,14 +135,370 @@ fun Greeting() {
                     },
                     modifier=Modifier
                         .padding(5.dp)
+                        .aspectRatio(1f)
                         .weight(1f),
                     shape = CircleShape,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.DarkGray,
+                        containerColor = Color(0xFF222222),
                         contentColor = Color.Red
                     )
                 ) {
-                    Text("<-", fontSize = 30.sp)
+                    Text("⌫", fontSize = 26.sp)
+                }
+                //percent button
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("%", fontSize = 30.sp)
+                }
+                //除
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF333333),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("÷", fontSize = 30.sp)
+                }
+            }
+            //第二排按鈕
+            Row(
+                modifier=Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            ){
+                //7
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("7", fontSize = 30.sp)
+                }
+                //8
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("8", fontSize = 30.sp)
+                }
+                //9
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("9", fontSize = 30.sp)
+                }
+                //乘
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF333333),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("×", fontSize = 30.sp)
+                }
+            }
+            //第三排
+            Row(
+                modifier=Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            ){
+                //4
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("4", fontSize = 30.sp)
+                }
+                //5
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("5", fontSize = 30.sp)
+                }
+                //6
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("6", fontSize = 30.sp)
+                }
+                //minus
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF333333),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("-", fontSize = 30.sp)
+                }
+            }
+
+
+            //第四排
+            Row(
+                modifier=Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            ){
+                //4
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("1", fontSize = 30.sp)
+                }
+                //5
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("2", fontSize = 30.sp)
+                }
+                //6
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("3", fontSize = 30.sp)
+                }
+                //minus
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF333333),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("+", fontSize = 30.sp)
+                }
+            }
+
+            //第5排
+            Row(
+                modifier=Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            ){
+                //4
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("00", fontSize = 28.sp)
+                }
+                //5
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("0", fontSize = 30.sp)
+                }
+                //6
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF222222),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text(".", fontSize = 30.sp)
+                }
+                //minus
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .aspectRatio(1f)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF555555),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("=", fontSize = 30.sp)
                 }
             }
         }
