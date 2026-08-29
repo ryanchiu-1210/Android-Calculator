@@ -121,8 +121,23 @@ fun Greeting() {
                 ) {
                     Text("C", fontSize = 30.sp)
                 }
-
-                
+                //backspace按鈕
+                Button(
+                    onClick = {
+                        display=""
+                        currentvalue=0
+                    },
+                    modifier=Modifier
+                        .padding(5.dp)
+                        .weight(1f),
+                    shape = CircleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.DarkGray,
+                        contentColor = Color.Red
+                    )
+                ) {
+                    Text("<-", fontSize = 30.sp)
+                }
             }
         }
     }
