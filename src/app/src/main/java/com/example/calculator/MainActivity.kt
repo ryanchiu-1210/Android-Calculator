@@ -66,7 +66,7 @@ fun Greeting() {
 
     var currentstring by remember{ mutableStateOf("")}//目前數值but字串
     var currentvalue by remember{ mutableStateOf(0)}//目前數值
-    var display by remember { mutableStateOf("test") }//顯示
+    var display by remember { mutableStateOf("87") }//顯示
     var firstnum by remember{ mutableStateOf(0)}
     var secondnum by remember { mutableStateOf(0) }
 
