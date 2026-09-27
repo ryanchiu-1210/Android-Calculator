@@ -134,7 +134,7 @@ fun Greeting() {
                 Button(
                     onClick = {
                         if(display.isNotEmpty()){
-                            display.dropLast(1)
+                           display = display.dropLast(1)
                         }
                     },
                     modifier=Modifier
