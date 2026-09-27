@@ -46,6 +46,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.wear.compose.material.Colors
+import androidx.wear.compose.material.Switch
 import com.example.calculator.ui.theme.CalculatorTheme
 
 class MainActivity : ComponentActivity() {
@@ -63,12 +64,12 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Greeting() {
-
     var currentstring by remember{ mutableStateOf("")}//目前數值but字串
     var currentvalue by remember{ mutableStateOf(0)}//目前數值
     var display by remember { mutableStateOf("0123") }//顯示
-    var firstnum by remember{ mutableStateOf(0)}
-    var secondnum by remember { mutableStateOf(0) }
+    var firstnum by remember{ mutableStateOf(0)}    //第一數字
+    var secondnum by remember { mutableStateOf(0) }//第二數字
+    var op by remember { mutableStateOf("") }     //運算符號
 
     Scaffold(modifier=Modifier
         .fillMaxSize(),
@@ -352,7 +353,7 @@ fun Greeting() {
                     .fillMaxWidth()
                     .padding(5.dp)
             ){
-                //4
+                //1
                 Button(
                     onClick = {
                         display=""
@@ -370,7 +371,7 @@ fun Greeting() {
                 ) {
                     Text("1", fontSize = 30.sp)
                 }
-                //5
+                //2
                 Button(
                     onClick = {
                         display=""
@@ -388,7 +389,7 @@ fun Greeting() {
                 ) {
                     Text("2", fontSize = 30.sp)
                 }
-                //6
+                //3
                 Button(
                     onClick = {
                         display=""
@@ -406,11 +407,12 @@ fun Greeting() {
                 ) {
                     Text("3", fontSize = 30.sp)
                 }
-                //minus
+                //plus
                 Button(
                     onClick = {
-                        display=""
-                        currentvalue=0
+                        op = "+"
+                        display+="+"
+                        firstnum = display.dropLast(1).toInt()
                     },
                     modifier=Modifier
                         .padding(5.dp)
@@ -432,7 +434,7 @@ fun Greeting() {
                     .fillMaxWidth()
                     .padding(5.dp)
             ){
-                //4
+                //00
                 Button(
                     onClick = {
                         display=""
@@ -450,7 +452,7 @@ fun Greeting() {
                 ) {
                     Text("00", fontSize = 28.sp)
                 }
-                //5
+                //0
                 Button(
                     onClick = {
                         display=""
@@ -468,7 +470,7 @@ fun Greeting() {
                 ) {
                     Text("0", fontSize = 30.sp)
                 }
-                //6
+                //.
                 Button(
                     onClick = {
                         display=""
@@ -486,11 +488,11 @@ fun Greeting() {
                 ) {
                     Text(".", fontSize = 30.sp)
                 }
-                //minus
+                //==
                 Button(
                     onClick = {
-                        display=""
-                        currentvalue=0
+                        secondnum = display.split(op)[1].toInt()
+
                     },
                     modifier=Modifier
                         .padding(5.dp)
@@ -509,8 +511,23 @@ fun Greeting() {
     }
 }
 
-fun Plus(first:Int,second:Int):Int{
-    return first+second
+fun cal(x:Int,y:Int,oper:String):Int{
+    if(oper=="+"){
+        return x+y
+    }
+    else if(oper=="-"){
+        return x-y
+    }
+    else if(oper=="×"){
+        return x*y
+    }
+    else if(oper =="÷"){
+        return x/y
+    }
+    else{
+
+        return 0;
+    }
 }
 
 @Preview(showBackground = true)
