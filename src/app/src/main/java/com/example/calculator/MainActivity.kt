@@ -492,7 +492,7 @@ fun Greeting() {
                 Button(
                     onClick = {
                         secondnum = display.split(op)[1].toInt()
-
+                        display = cal(firstnum,secondnum,op).toString()
                     },
                     modifier=Modifier
                         .padding(5.dp)
