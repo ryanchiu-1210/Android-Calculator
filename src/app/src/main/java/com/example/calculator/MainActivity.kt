@@ -115,7 +115,7 @@ fun Greeting() {
                 //清除按鈕
                 Button(
                     onClick = {
-                        display=""
+                        display="0"
                         currentvalue=0
                     },
                     modifier=Modifier
@@ -133,7 +133,7 @@ fun Greeting() {
                 //backspace按鈕
                 Button(
                     onClick = {
-                        if(display.isNotEmpty()){
+                        if(display.isNotEmpty()&&display!="0"){
                            display = display.dropLast(1)
                         }
                     },
