@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.node.ModifierNodeElement
+import androidx.compose.ui.semantics.SemanticsConfiguration
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -59,14 +60,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Greeting() {
 
     var currentstring by remember{ mutableStateOf("")}//目前數值but字串
     var currentvalue by remember{ mutableStateOf(0)}//目前數值
-    var display by remember { mutableStateOf("87") }//顯示
+    var display by remember { mutableStateOf("0123") }//顯示
     var firstnum by remember{ mutableStateOf(0)}
     var secondnum by remember { mutableStateOf(0) }
 
@@ -133,8 +133,9 @@ fun Greeting() {
                 //backspace按鈕
                 Button(
                     onClick = {
-                        display=""
-                        currentvalue=0
+                        if(display.isNotEmpty()){
+                            display.dropLast(1)
+                        }
                     },
                     modifier=Modifier
                         .padding(5.dp)
@@ -508,7 +509,9 @@ fun Greeting() {
     }
 }
 
-
+fun Plus(first:Int,second:Int):Int{
+    return first+second
+}
 
 @Preview(showBackground = true)
 @Composable
