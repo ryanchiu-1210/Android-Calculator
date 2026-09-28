@@ -437,8 +437,7 @@ fun Greeting() {
                 //00
                 Button(
                     onClick = {
-                        display=""
-                        currentvalue=0
+
                     },
                     modifier=Modifier
                         .padding(5.dp)
@@ -455,8 +454,7 @@ fun Greeting() {
                 //0
                 Button(
                     onClick = {
-                        display=""
-                        currentvalue=0
+
                     },
                     modifier=Modifier
                         .padding(5.dp)
@@ -473,8 +471,7 @@ fun Greeting() {
                 //.
                 Button(
                     onClick = {
-                        display=""
-                        currentvalue=0
+
                     },
                     modifier=Modifier
                         .padding(5.dp)
