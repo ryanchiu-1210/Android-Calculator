@@ -153,8 +153,7 @@ fun Greeting() {
                 //percent button
                 Button(
                     onClick = {
-                        display=""
-                        currentvalue=0
+
                     },
                     modifier=Modifier
                         .padding(5.dp)
@@ -171,7 +170,7 @@ fun Greeting() {
                 //除
                 Button(
                     onClick = {
-                        
+
                     },
                     modifier=Modifier
                         .padding(5.dp)
