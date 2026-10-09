@@ -509,7 +509,6 @@ fun cal(x:Int,y:Int,oper:String):Int{
         return x/y
     }
     else{
-
         return 0;
     }
 }
